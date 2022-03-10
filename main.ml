@@ -3,6 +3,7 @@ let _=
        let lexbuf=Lexing.from_channel stdin in 
        while true do 
        	Parseur.main Lexeur.token lexbuf
+       	| > Printf.printf "%i\n%!";
        done
     with
     
