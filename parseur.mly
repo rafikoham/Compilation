@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %token <int> NOMBRE 
 %token PLUS MOINS FOIS GPAREN DPAREN EOL
 %left  PLUS MOINS
@@ -8,6 +9,22 @@
 %%
 main:
 	expression EOL				{$1}
+=======
+<<<<<<< HEAD
+%token NOMBRE PLUS MOINS FOIS GPAREN DPAREN PT_VIRG
+%type <unit> main expression terme facteur
+=======
+%token NOMBRE PLUS MOINS FOIS GPAREN DPAREN EOL
+%left  PLUS MOINS
+%left  FOIS
+%nonassoc UMOINS
+%type <unit> main expression
+>>>>>>> master
+%start main 
+%%
+main:
+	expression PT_VIRG				{}
+>>>>>>> p0.0
 ;
 
 expression:

@@ -2,8 +2,13 @@ let _=
     try
        let lexbuf=Lexing.from_channel stdin in 
        while true do 
+<<<<<<< HEAD
        	Parseur.main Lexeur.token lexbuf
        	| > Printf.printf "%i\n%!";
+=======
+       	(*Parseur.main Lexeur.token lexbuf*)
+       	Parseur.main lexbuf
+>>>>>>> p0.0
        done
     with
     
