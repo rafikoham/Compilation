@@ -6,7 +6,7 @@
 
 rule token=parse 
 		[' ' '\t']			{token lexbuf}
-		|['\n']			{EOL}
+		|['\n'';']			{PT_VIRG}
 		|['0'-'9']+			{NOMBRE}
 		|'+'				{PLUS}
 		|'-'				{MOINS}
