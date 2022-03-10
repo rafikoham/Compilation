@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 # Question 9
 ### On voudrai pouvoir écrire plusieurs lignes et finir par un ";"
+<<<<<<< HEAD
 > Création d'un nouveau token 
 >> PT_VIRG 
 >> Suppression du token EOL
@@ -22,3 +23,9 @@
 -----------------------
 ### C'est une défintion plus simple et concise 
 >>>>>>> master
+=======
+### Création du token PT_VIRG effectué 
+
+## Rajout d'une écriture décimale pour les nombres
+### Le regex est : ['0'-'9']+['\.']['0'-'9']+
+>>>>>>> TP
