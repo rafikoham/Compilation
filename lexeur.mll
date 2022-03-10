@@ -7,7 +7,7 @@
 rule token=parse 
 		[' ' '\t']			{token lexbuf}
 		|['\n'';']			{PT_VIRG}
-		|['0'-'9']+			{NOMBRE}
+		|['0'-'9']+['\.']['0'-'9']+	{NOMBRE}
 		|'+'				{PLUS}
 		|'-'				{MOINS}
 		|'*'				{FOIS}
