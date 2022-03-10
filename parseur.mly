@@ -1,6 +1,6 @@
 %token NOMBRE PLUS MOINS FOIS DIV GPAREN DPAREN EOL
 %left  PLUS MOINS
-%left  FOIS DIV
+%left  FOIS MOD
 %nonassoc UMOINS
 %type <unit> main expression
 %start main 
@@ -13,7 +13,7 @@ expression:
 	expression PLUS expression		{}
 	|expression MOINS expression		{}
 	|expression FOIS expression		{}
-	|expression DIV  expression		{}
+	|expression MOD  expression		{}
 	|GPAREN expression DPAREN		{}
 	|MOINS	expression %prec UMOINS	{}
 	|NOMBRE
