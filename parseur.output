@@ -1,0 +1,191 @@
+   0  $accept : %entry% $end
+
+   1  main : expression EOL
+
+   2  expression : expression PLUS expression
+   3             | expression MOINS expression
+   4             | expression FOIS expression
+   5             | GPAREN expression DPAREN
+   6             | MOINS expression
+   7             | NOMBRE
+
+   8  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (8)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	main  goto 6
+	expression  goto 7
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	expression : NOMBRE .  (7)
+
+	.  reduce 7
+
+
+state 4
+	expression : MOINS . expression  (6)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	expression  goto 8
+
+
+state 5
+	expression : GPAREN . expression DPAREN  (5)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	expression  goto 9
+
+
+state 6
+	%entry% : '\001' main .  (8)
+
+	.  reduce 8
+
+
+state 7
+	main : expression . EOL  (1)
+	expression : expression . PLUS expression  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression . FOIS expression  (4)
+
+	PLUS  shift 10
+	MOINS  shift 11
+	FOIS  shift 12
+	EOL  shift 13
+	.  error
+
+
+state 8
+	expression : expression . PLUS expression  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression . FOIS expression  (4)
+	expression : MOINS expression .  (6)
+
+	.  reduce 6
+
+
+state 9
+	expression : expression . PLUS expression  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression . FOIS expression  (4)
+	expression : GPAREN expression . DPAREN  (5)
+
+	PLUS  shift 10
+	MOINS  shift 11
+	FOIS  shift 12
+	DPAREN  shift 14
+	.  error
+
+
+state 10
+	expression : expression PLUS . expression  (2)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	expression  goto 15
+
+
+state 11
+	expression : expression MOINS . expression  (3)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	expression  goto 16
+
+
+state 12
+	expression : expression FOIS . expression  (4)
+
+	NOMBRE  shift 3
+	MOINS  shift 4
+	GPAREN  shift 5
+	.  error
+
+	expression  goto 17
+
+
+state 13
+	main : expression EOL .  (1)
+
+	.  reduce 1
+
+
+state 14
+	expression : GPAREN expression DPAREN .  (5)
+
+	.  reduce 5
+
+
+state 15
+	expression : expression . PLUS expression  (2)
+	expression : expression PLUS expression .  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression . FOIS expression  (4)
+
+	FOIS  shift 12
+	PLUS  reduce 2
+	MOINS  reduce 2
+	DPAREN  reduce 2
+	EOL  reduce 2
+
+
+state 16
+	expression : expression . PLUS expression  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression MOINS expression .  (3)
+	expression : expression . FOIS expression  (4)
+
+	FOIS  shift 12
+	PLUS  reduce 3
+	MOINS  reduce 3
+	DPAREN  reduce 3
+	EOL  reduce 3
+
+
+state 17
+	expression : expression . PLUS expression  (2)
+	expression : expression . MOINS expression  (3)
+	expression : expression . FOIS expression  (4)
+	expression : expression FOIS expression .  (4)
+
+	.  reduce 4
+
+
+11 terminals, 4 nonterminals
+9 grammar rules, 18 states
