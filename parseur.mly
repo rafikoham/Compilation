@@ -9,7 +9,6 @@
 main:
 	expression EOL				{$1}
 ;
-
 expression:
 	expression PLUS expression		{Plus($1,$3)}
 	|expression MOINS expression		{Moins($1,$3)}

@@ -106,7 +106,6 @@ and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
       | 0 ->
 # 8 "lexeur.mll"
                (token lexbuf)
-# 110 "lexeur.ml"
 
   | 1 ->
 # 9 "lexeur.mll"
@@ -123,6 +122,7 @@ let
                         (NOMBRE(int_of_string lexem))
 # 125 "lexeur.ml"
 
+
   | 3 ->
 # 11 "lexeur.mll"
           (PLUS)
@@ -133,15 +133,18 @@ let
           (MOINS)
 # 135 "lexeur.ml"
 
+
   | 5 ->
 # 13 "lexeur.mll"
           (FOIS)
 # 140 "lexeur.ml"
 
+
   | 6 ->
 # 14 "lexeur.mll"
           (GPAREN)
 # 145 "lexeur.ml"
+
 
   | 7 ->
 # 15 "lexeur.mll"
