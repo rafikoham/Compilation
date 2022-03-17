@@ -8,6 +8,7 @@
 %%
 main:
 	expression EOL				{$1}
+
 ;
 
 expression:

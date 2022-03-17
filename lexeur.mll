@@ -5,9 +5,10 @@
 }
 
 rule token=parse 
-		[' ' '\t']			{token lexbuf}
-		|['\n']			{EOL}
+		[' ' '\t' '\n']			{token lexbuf}
 		|['0'-'9']+ as lexem		{NOMBRE(int_of_string lexem)}
+
+		|[';']				{PT_VIRG}
 		|'+'				{PLUS}
 		|'-'				{MOINS}
 		|'*'				{FOIS}

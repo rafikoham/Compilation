@@ -113,50 +113,43 @@ and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
             (EOL)
 # 115 "lexeur.ml"
 
-  | 2 ->
-let
+  | 2 ->let
 # 10 "lexeur.mll"
-                 lexem
-# 121 "lexeur.ml"
-= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
+                 lexem= Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
 # 10 "lexeur.mll"
                         (NOMBRE(int_of_string lexem))
-# 125 "lexeur.ml"
 
   | 3 ->
 # 11 "lexeur.mll"
           (PLUS)
-# 130 "lexeur.ml"
 
   | 4 ->
 # 12 "lexeur.mll"
           (MOINS)
-# 135 "lexeur.ml"
 
   | 5 ->
 # 13 "lexeur.mll"
           (FOIS)
+
 # 140 "lexeur.ml"
 
   | 6 ->
 # 14 "lexeur.mll"
           (GPAREN)
-# 145 "lexeur.ml"
 
   | 7 ->
 # 15 "lexeur.mll"
           (DPAREN)
 # 150 "lexeur.ml"
 
+
   | 8 ->
 # 16 "lexeur.mll"
           (raise Eof)
-# 155 "lexeur.ml"
 
   | 9 ->
 # 17 "lexeur.mll"
         (raise TokenInconu)
-# 160 "lexeur.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_token_rec lexbuf __ocaml_lex_state

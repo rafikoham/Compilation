@@ -8,4 +8,8 @@ type token =
   | EOL
 
 val main :
+
   (Lexing.lexbuf  -> token) -> Lexing.lexbuf -> AST.expression_a
+
+  (Lexing.lexbuf  -> token) -> Lexing.lexbuf -> unit
+
