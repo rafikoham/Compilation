@@ -5,7 +5,7 @@ type expression_a=
 	|Div 	of expression_a * expression_a
 	|Mod 	of expression_a * expression_a
 	|Neg 	of expression_a
-	|Num	of int
+	|Num	of float
 	|Bool 	of expression_a * expression_a
 ;;
 
@@ -19,6 +19,6 @@ let rec print_binaire form s g d =Format.fprintf form "@[<2>%s%s@ %a%s@ %a%s@]" 
 				|Mod(g,d)->print_binaire form "Mod" g d
 				|Bool(g,d)->print_binaire form "Bool" g d 
 				|Neg e -> fprintf form "@[<2>%s@ %a@]" "Neg" print_AST e
-				|Num n -> fprintf form "@[<2>%s@ %i@]" "Num" n 
+				|Num n -> fprintf form "@[<2>%s@ %f@]" "Num" n 
 ;;
 

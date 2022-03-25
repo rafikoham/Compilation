@@ -4,7 +4,6 @@ let _=
        while true do 
        	Parseur.main Lexeur.token lexbuf
        	|> Format.printf "%a\n%!" AST.print_AST;
-
        done
     with
     
@@ -12,3 +11,4 @@ let _=
     	|Lexeur.TokenInconu
     	|Parsing.Parse_error ->Printf.printf("Ceci n'est pas une expression arithémtique\n")
 	
+

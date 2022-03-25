@@ -1,4 +1,8 @@
-%token <int> NOMBRE
+%{
+	open AST
+%}
+
+%token <float> NOMBRE
 %token PLUS MOINS FOIS GPAREN DPAREN PT_VIRG 
 %token MOD DIV
 %token GPAREN DPAREN BOOLEAN
@@ -22,8 +26,6 @@ expression:
 	|MOINS		expression	%prec UMOINS	{Neg $2}
 	|expression	DIV	expression		{Div($1,$3)}
 	|expression	MOD	expression		{Mod($1,$3)}
-	|BOOLEAN	expression			{$2}
-	|expression	BOOLEAN	expression	{Bool($1,$3)}
-	|NOMBRE					{Num	$1}
+	|NOMBRE					{Num $1}
 ;
 
