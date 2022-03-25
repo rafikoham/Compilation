@@ -4,15 +4,20 @@
 	exception TokenInconu
 }
 
-rule token=parse 
-		[' ' '\t']			{token lexbuf}
-		|['\n'';']			{PT_VIRG}
-		|['0'-'9']+['\.']['0'-'9']+	{NOMBRE}
-		|'+'				{PLUS}
-		|'-'				{MOINS}
-		|'%'				{MOD}
-		|'*'				{FOIS}
-		|'('				{GPAREN}
-		|')'				{DPAREN}
-		|eof				{raise Eof}
-		|_				{raise TokenInconu}
+rule token=
+	parse	[' ' '\t' '\n']+					{token lexbuf}
+		|';'							{PT_VIRG}
+		|['0'-'9']+['\.']['0'-'9']+ 	as lexem		{NOMBRE(int_of_string lexem)}
+		|'+'							{PLUS}
+		|'-'							{MOINS}
+		|'%'							{MOD}
+		|'/'							{DIV}
+		|'*'							{FOIS}
+		|'('							{GPAREN}
+		|')'							{DPAREN}
+		|"True"						{BOOLEAN}
+		|"False"						{BOOLEAN}
+		|'!'							{BOOLEAN}
+		|'<'							{BOOLEAN}
+		|eof							{raise Eof}
+		|_							{raise TokenInconu}
