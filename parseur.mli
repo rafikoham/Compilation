@@ -1,4 +1,5 @@
 type token =
+<<<<<<< HEAD
   | NOMBRE of (float)
   | PLUS
   | MOINS

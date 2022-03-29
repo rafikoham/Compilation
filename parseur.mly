@@ -12,7 +12,6 @@
 %type<AST.expression_a> main expression
 %start main
 %%
-
 main:
 	
 	expression		PT_VIRG	{$1}
@@ -28,4 +27,5 @@ expression:
 	|expression	MOD	expression		{Mod($1,$3)}
 	|NOMBRE					{Num $1}
 ;
+
 

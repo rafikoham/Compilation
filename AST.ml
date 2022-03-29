@@ -43,9 +43,8 @@ let rec print_post_fixe_deux (expression:expression_a)=
 			|Neg e ->Printf.printf "NegaNb"
 
 ;;
+			
 	
-
-
 
 
 

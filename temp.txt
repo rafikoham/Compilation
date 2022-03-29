@@ -1,0 +1,2 @@
+	|BOOLEAN	expression			{$2}
+	|expression	BOOLEAN	expression	{Bool($1,$3)}

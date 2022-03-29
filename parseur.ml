@@ -16,16 +16,6 @@ let _ = parse_error;;
 	open AST
 # 18 "parseur.ml"
 let yytransl_const = [|
-  258 (* PLUS *);
-  259 (* MOINS *);
-  260 (* FOIS *);
-  261 (* GPAREN *);
-  262 (* DPAREN *);
-  263 (* PT_VIRG *);
-  264 (* MOD *);
-  265 (* DIV *);
-  266 (* BOOLEAN *);
-    0|]
 
 let yytransl_block = [|
   257 (* NOMBRE *);
@@ -77,7 +67,10 @@ let yycheck = "\004\000\
 \007\001\006\001\007\001\004\001\255\255\255\255\255\255\008\001\
 \009\001\001\001\255\255\003\001\255\255\005\001"
 
+
+
 let yynames_const = "\
+  NOMBRE\000\
   PLUS\000\
   MOINS\000\
   FOIS\000\
@@ -163,6 +156,7 @@ let yyact = [|
              (Num _1)
 # 165 "parseur.ml"
                : AST.expression_a))
+   
 (* Entry main *)
 ; (fun __caml_parser_env -> raise (Parsing.YYexit (Parsing.peek_val __caml_parser_env 0)))
 |]
@@ -185,3 +179,4 @@ let yytables =
     Parsing.names_block=yynames_block }
 let main (lexfun : Lexing.lexbuf -> token) (lexbuf : Lexing.lexbuf) =
    (Parsing.yyparse yytables 1 lexfun lexbuf : AST.expression_a)
+
