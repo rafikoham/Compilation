@@ -22,3 +22,58 @@ let rec print_binaire form s g d =Format.fprintf form "@[<2>%s%s@ %a%s@ %a%s@]" 
 				|Num n -> fprintf form "@[<2>%s@ %f@]" "Num" n 
 ;;
 
+
+let rec print_post_fixe form s g d = Format.fprintf form "@[<2>%s%s@ %a%s@ %a%s@]" s"(" print_fixe g","print_fixe d")"
+				and print_fixe form=let open Format in function
+				|Num n -> fprintf form "@[<2>%s@ %f@]" "CsteNb" n
+				|Plus(g,d)->print_post_fixe form "AddiNb" g d 
+				|Moins(g,d)->print_post_fixe form "SubiNB" g d 
+				|Mult(g,d)->print_post_fixe form "MultNb" g d 
+				|Neg e->fprintf  form"@[<2>%s@ %a@]" "NegaNb" print_fixe e
+				
+;;		
+	
+let rec print_post_fixe_deux (expression:expression_a)=
+			match expression with
+			|Num n -> Printf.printf "CstNb %.5f" n 
+			|Plus(g,d)->Printf.printf "AddiNb\n"
+			|Moins(g,d)->Printf.printf "SubiNb\n"
+			|Mult(g,d)->Printf.printf "MultNb\n"
+			|Div(g,d)->Printf.printf "DivNb\n"
+			|Neg e ->Printf.printf "NegaNb"
+
+;;
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+				
+				
+				
